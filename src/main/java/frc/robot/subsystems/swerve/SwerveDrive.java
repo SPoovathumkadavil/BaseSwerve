@@ -64,6 +64,10 @@ public class SwerveDrive extends SubsystemBase {
 		}
 	}
 
+	public void zeroGyro() {
+		gyro.zero();
+	}
+
 	/**
 	 * Fixes situation where robot drifts in the direction it's rotating in if
 	 * turning and translating at the same time
