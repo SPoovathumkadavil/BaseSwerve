@@ -3,7 +3,6 @@ package frc.robot.commands.swerve;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.commands.swerve.TeleopSwerveCommand.DriveMode;
 import frc.robot.subsystems.swerve.SwerveDrive;
 
 public class TeleopSwerveCommand extends Command {
@@ -21,7 +20,7 @@ public class TeleopSwerveCommand extends Command {
     public TeleopSwerveCommand(CommandXboxController xbox) {
         this.xbox = xbox;
         swerve = SwerveDrive.getInstance();
-        
+
         addRequirements(swerve);
     }
 
