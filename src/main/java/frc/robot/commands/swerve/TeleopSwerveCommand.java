@@ -10,7 +10,7 @@ public class TeleopSwerveCommand extends Command {
     private CommandXboxController xbox;
     private SwerveDrive swerve;
 
-    private DriveMode driveMode = DriveMode.ROBOT_CENTRIC;
+    private DriveMode driveMode = DriveMode.FIELD_CENTRIC;
 
     public static final double MAX_FORWARD_SENSITIVITY = 4;
     public static final double MAX_SIDEWAYS_SENSITIVITY = 4;
@@ -35,16 +35,19 @@ public class TeleopSwerveCommand extends Command {
         switch (driveMode) {
             case ROBOT_CENTRIC:
                 swerve.driveRobotCentric(new ChassisSpeeds(
-                    forward,
-                    left,
-                    rotational
-                ));
+                        forward,
+                        left,
+                        rotational));
                 break;
+            case FIELD_CENTRIC:
+                swerve.driveRobotCentric(
+                        ChassisSpeeds.fromFieldRelativeSpeeds(forward, left, rotational, swerve.getYaw()));
         }
 
     }
-    
+
     enum DriveMode {
-        ROBOT_CENTRIC
+        ROBOT_CENTRIC,
+        FIELD_CENTRIC
     }
 }
